@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   philosophers.h                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mtorun <mtorun@student.42.fr>              +#+  +:+       +#+        */
+/*   By: afakili <afakili@student.42istanbul.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/12 02:35:52 by mtorun            #+#    #+#             */
-/*   Updated: 2022/11/19 23:08:19 by mtorun           ###   ########.fr       */
+/*   Created: 2022/11/30 15:33:34 by afakili           #+#    #+#             */
+/*   Updated: 2022/11/30 15:35:42 by afakili          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,20 +49,15 @@ typedef struct s_ins
 
 int		init_arg(t_ins *ins, int ac, char **av);
 int		ft_atoi(const char *str);
-
 int		control_philo(t_ins *ins);
 size_t	get_time(void);
 void	ft_usleep(size_t ms, t_ins *ins);
-
 void	*routine(void *v_philo);
 int		start_threads(t_ins *ins);
-
 int		check_death(t_philo *philo);
-
 int		ft_take_forks(t_philo *philo);
 int		ft_eating(t_philo *philo);
 int		ft_sleeping(t_philo *philo);
-
 void	ft_clear(t_ins *ins);
 
-#endif //PHILOSOPHERS_H
+#endif

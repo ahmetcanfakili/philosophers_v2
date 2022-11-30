@@ -1,39 +1,33 @@
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    Makefile                                           :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: afakili <afakili@student.42istanbul.com    +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2022/11/30 15:31:36 by afakili           #+#    #+#              #
+#    Updated: 2022/11/30 15:35:39 by afakili          ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
+
 NAME = philo
-
-SRC		= ft_init.c ft_routine.c ft_utils.c philosophers.c
-
-OBJ		= $(SRC:.c=.o)
-
-OBJ_DIR	= obj/
-
-SRC_DIR	= ./
-
-OBJ_SRC		= $(addprefix $(OBJ_DIR), $(OBJ))
-
-SRC_FILES	= $(addprefix $(SRC_DIR), $(SRC))
-
 CC = gcc
+CFLAGS = -Wall -Wextra -Werror #-fsanitize=thread
+SRCS = ft_init.c ft_routine.c ft_utils.c philosophers.c
 
-CFLAGS = -Wall -Wextra -Werror -fsanitize=thread -g
+OBJ = $(SRCS:.c=.o)
 
-RM = rm -rf
+$(NAME): $(OBJ)
+	$(CC) $(CFLAGS) $(SRCS) -o $(NAME)
 
 all: $(NAME)
 
-$(NAME): $(OBJ_SRC)
-	@$(CC) $(CFLAGS) $(OBJ_SRC) -o $(NAME) 
-	@echo "\033[32mCompilation done\033[0;39m"
-
-$(OBJ_DIR)%.o: $(SRC_DIR)/%.c
-	@mkdir -p $(OBJ_DIR) 2> /dev/null
-	@$(CC) $(CFLAGS) -c $< -o $@
-
 clean:
-	@$(RM) $(OBJ)
+	rm -rf $(OBJ)
 
 fclean: clean
-	@$(RM) $(NAME) $(OBJ_DIR)
+	rm -rf $(OBJ) $(NAME)
 
-re:	fclean all
+re: fclean all
 
-.PHONE: all clean fclean re
+.PHONY: all re clean fclean
